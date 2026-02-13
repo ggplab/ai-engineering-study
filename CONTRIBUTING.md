@@ -1,13 +1,13 @@
 # Contributing Guide
 
 ## 문서 작성 원칙
-- 한 단원 = 한 파일
-- 질문/답글/모범정답/배운점 섹션 유지
+- 루트 `README.md` 단일 문서 기준으로 관리
+- 질문은 기본 노출, 답변/모범정답은 `details` 토글 유지
 - 문장은 짧고, 핵심 위주로 작성
 
 ## 커밋 메시지 규칙
-- `docs: add chapter XX topic`
-- `docs: revise chapter XX answers`
+- `docs: refresh readme from notion export`
+- `docs: revise chapter answers in readme`
 - `chore: restructure folders`
 
 ## 리뷰 체크리스트

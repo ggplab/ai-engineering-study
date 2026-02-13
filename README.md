@@ -5,6 +5,11 @@
 - 질문: 기본으로 펼쳐서 확인
 - 답변/모범답안: 각 질문 아래 토글(`details`)로 숨김
 
+## 생성 방법
+```bash
+scripts/build_readme_from_chapters.sh "notion_raw/<notion_export>.md"
+```
+
 ## 단원 목록
 - [01단원](#01단원)
 - [02단원](#02단원)

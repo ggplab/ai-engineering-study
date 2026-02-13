@@ -7,9 +7,13 @@
 4. `Include subpages` 체크 후 다운로드
 
 ## 2) 로컬 정리
-- 압축 해제 후 단원별 Markdown 파일을 확인
-- 이미지 파일은 단원별 폴더로 옮기거나 GitHub `assets/`에 모아 관리
-- 단원 내용을 `templates/chapter-template.md` 형식에 맞춰 재배치
+- 압축 해제 후 메인 Markdown 파일을 `notion_raw/`에 저장
+- 파일명 예시: `notion_raw/AI 엔지니어링 스터디 ... .md`
+- 아래 스크립트로 루트 `README.md`를 재생성
+
+```bash
+scripts/build_readme_from_chapters.sh "notion_raw/<notion_export>.md"
+```
 
 ## 3) 반영 규칙
 - 질문/답글/모범정답을 분리해서 작성
@@ -18,7 +22,7 @@
 
 ## 4) 커밋 예시
 ```bash
-git add chapters/02-rag-overview.md
-git commit -m "docs: add chapter 02 rag overview"
+git add README.md notion_raw/ scripts/build_readme_from_chapters.sh
+git commit -m "docs: refresh readme from notion export"
 git push
 ```
