@@ -45,11 +45,34 @@ BEGIN {
   in_chapter=0;
   chapter_open=0;
   question_open=0;
+  block_open=0;
   author="";
   qidx=0;
   chapter_num="";
+  section="answer";
+}
+function open_block(kind) {
+  if (block_open==1) {
+    print "```";
+    print "";
+    block_open=0;
+  }
+  if (kind=="answer") {
+    print "**답변**";
+    print "";
+  } else {
+    print "**모범답안**";
+    print "";
+  }
+  print "```text";
+  block_open=1;
 }
 function close_question() {
+  if (block_open==1) {
+    print "```";
+    print "";
+    block_open=0;
+  }
   if (question_open==1) {
     print "\n</details>\n";
     question_open=0;
@@ -99,7 +122,8 @@ function close_chapter() {
   if (author != "") {
     printf "**작성자:** `%s`\n\n", author;
   }
-  print "**답변**\n";
+  section="answer";
+  open_block("answer");
 
   question_open=1;
   next;
@@ -113,7 +137,8 @@ function close_chapter() {
   if (line ~ /^<aside>/ || line ~ /^<\/aside>/) next;
   if (line ~ /^💡[[:space:]]*$/) next;
   if (line ~ /^✅[[:space:]]*$/) {
-    print "\n**모범답안**\n";
+    section="model";
+    open_block("model");
     next;
   }
 
